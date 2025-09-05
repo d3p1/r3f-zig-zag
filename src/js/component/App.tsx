@@ -4,15 +4,19 @@
  */
 import {Canvas} from '@react-three/fiber'
 import {OrbitControls} from '@react-three/drei'
+import {Physics} from '@react-three/rapier'
+import {Light} from './app/env/Light.tsx'
+import {Level} from './app/Level.tsx'
 
 export const App = () => {
   return (
-    <Canvas camera={{position: [1, 1, 1]}}>
+    <Canvas camera={{position: [1, 1, 5]}} shadows={true}>
       <OrbitControls />
-      <mesh>
-        <boxGeometry />
-        <meshNormalMaterial />
-      </mesh>
+
+      <Physics debug={true}>
+        <Light />
+        <Level />
+      </Physics>
     </Canvas>
   )
 }
