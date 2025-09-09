@@ -7,6 +7,7 @@ import {useRef} from 'react'
 import * as THREE from 'three'
 import {Trap} from '../Trap.tsx'
 import type {Trap as TrapType} from '../../../../types'
+import {config} from '../../../../etc/config.ts'
 
 export const Axe: TrapType = ({
   geometry = new THREE.BoxGeometry(),
@@ -26,11 +27,14 @@ export const Axe: TrapType = ({
     })
   }
 
+  const scaleX = config.floor.width * 0.75
+  const scaleY = scaleX
+  const scaleZ = scaleY * 0.1
   return (
     <Trap
       geometry={geometry}
       material={material}
-      scale={[4, 4, 0.5]}
+      scale={[scaleX, scaleY, scaleZ]}
       position={position}
       update={handleUpdate}
     />

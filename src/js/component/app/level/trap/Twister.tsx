@@ -7,6 +7,7 @@ import {useRef} from 'react'
 import * as THREE from 'three'
 import {Trap} from '../Trap.tsx'
 import type {Trap as TrapType} from '../../../../types'
+import {config} from '../../../../etc/config.ts'
 
 export const Twister: TrapType = ({
   position = [0, 0, 0],
@@ -25,11 +26,14 @@ export const Twister: TrapType = ({
     body.setNextKinematicRotation(rotation)
   }
 
+  const scaleX = config.floor.width * 0.75
+  const scaleY = scaleX * 0.1
+  const scaleZ = scaleY
   return (
     <Trap
       geometry={geometry}
       material={material}
-      scale={[4, 0.5, 0.5]}
+      scale={[scaleX, scaleY, scaleZ]}
       position={position}
       update={handleUpdate}
     />
