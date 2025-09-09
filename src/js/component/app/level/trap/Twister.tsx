@@ -5,11 +5,10 @@
 import type {RapierRigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import * as THREE from 'three'
-import {type ThreeElements} from '@react-three/fiber'
-import * as React from 'react'
 import {Trap} from '../Trap.tsx'
+import type {Trap as TrapType} from '../../../../types'
 
-export const Twister: React.FC<ThreeElements['mesh']> = ({
+export const Twister: TrapType = ({
   position = [0, 0, 0],
   geometry = new THREE.BoxGeometry(),
   material = new THREE.MeshStandardMaterial(),

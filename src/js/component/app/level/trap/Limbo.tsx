@@ -5,11 +5,10 @@
 import type {RapierRigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import * as THREE from 'three'
-import type {ThreeElements} from '@react-three/fiber'
-import * as React from 'react'
 import {Trap} from '../Trap.tsx'
+import type {Trap as TrapType} from '../../../../types'
 
-export const Limbo: React.FC<ThreeElements['mesh']> = ({
+export const Limbo: TrapType = ({
   geometry = new THREE.BoxGeometry(),
   material = new THREE.MeshStandardMaterial(),
   position = [0, 0, 0],

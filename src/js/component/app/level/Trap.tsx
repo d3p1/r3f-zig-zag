@@ -2,16 +2,12 @@
  * @description Trap
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
-import {type ThreeElements, useFrame} from '@react-three/fiber'
+import {useFrame} from '@react-three/fiber'
 import {type RapierRigidBody, RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
-import * as React from 'react'
+import type {Trap as TrapType} from '../../../types'
 
-type Props = ThreeElements['mesh'] & {
-  update: (body: RapierRigidBody, time: number) => void
-}
-
-export const Trap: React.FC<Props> = ({
+export const Trap: TrapType = ({
   geometry,
   material,
   position,
