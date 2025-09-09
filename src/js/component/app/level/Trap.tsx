@@ -7,11 +7,17 @@ import {type RapierRigidBody, RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import {useStage} from '../../../store/useStage.ts'
 import type {Trap as TrapType} from '../../../types'
+import {config} from '../../../etc/config.ts'
 
-export const Trap: TrapType = ({position, scale, update}) => {
+export const Trap: TrapType = ({
+  position,
+  scale = [1, 1, 1],
+  update = () => {},
+}) => {
   const bodyRef = useRef<RapierRigidBody>(null!)
   const geometry = useStage((state) => state.geometry)
-  const material = useStage((state) => state.trapMaterial)
+  const trapMaterial = useStage((state) => state.trapMaterial)
+  const floorTrapMaterial = useStage((state) => state.floorTrapMaterial)
 
   useFrame((state) => {
     if (!update) {
@@ -22,8 +28,22 @@ export const Trap: TrapType = ({position, scale, update}) => {
   })
 
   return (
-    <RigidBody type="kinematicPosition" position={position} ref={bodyRef}>
-      <mesh geometry={geometry} material={material} scale={scale} />
-    </RigidBody>
+    <group position={position}>
+      <RigidBody
+        type="kinematicPosition"
+        position={[0, scale[1] * 0.5, 0]}
+        restitution={0.2}
+        friction={0}
+        ref={bodyRef}
+      >
+        <mesh geometry={geometry} material={trapMaterial} scale={scale} />
+      </RigidBody>
+      <mesh
+        geometry={geometry}
+        material={floorTrapMaterial}
+        scale={[config.floor.width, config.floor.height, config.floor.depth]}
+        position={[0, -config.floor.height * 0.5, 0]}
+      />
+    </group>
   )
 }

@@ -8,7 +8,7 @@ export const config = {
       y: 0,
     },
     width: 4,
-    height: 0.5,
+    height: 0.25,
     depth: 4,
   },
   player: {
