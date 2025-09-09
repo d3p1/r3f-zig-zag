@@ -11,4 +11,7 @@ export const config = {
     height: 0.5,
     depth: 4,
   },
+  player: {
+    height: 1,
+  },
 }

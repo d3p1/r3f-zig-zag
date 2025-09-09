@@ -9,11 +9,7 @@ import {Trap} from '../Trap.tsx'
 import type {Trap as TrapType} from '../../../../types'
 import {config} from '../../../../etc/config.ts'
 
-export const Twister: TrapType = ({
-  position = [0, 0, 0],
-  geometry = new THREE.BoxGeometry(),
-  material = new THREE.MeshStandardMaterial(),
-}) => {
+export const Twister: TrapType = ({position = [0, 0, 0]}) => {
   const frequency = useRef(
     (Math.random() + 0.2) * (-1) ** Math.round(Math.random()),
   )
@@ -31,8 +27,6 @@ export const Twister: TrapType = ({
   const scaleZ = scaleY
   return (
     <Trap
-      geometry={geometry}
-      material={material}
       scale={[scaleX, scaleY, scaleZ]}
       position={position}
       update={handleUpdate}

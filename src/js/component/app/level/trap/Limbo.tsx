@@ -4,26 +4,20 @@
  */
 import type {RapierRigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
-import * as THREE from 'three'
 import {Trap} from '../Trap.tsx'
 import type {Trap as TrapType} from '../../../../types'
 import {config} from '../../../../etc/config.ts'
 
-export const Limbo: TrapType = ({
-  geometry = new THREE.BoxGeometry(),
-  material = new THREE.MeshStandardMaterial(),
-  position = [0, 0, 0],
-}) => {
+export const Limbo: TrapType = ({position = [0, 0, 0]}) => {
   const offset = useRef(Math.random() * 2 * Math.PI)
 
   const handleUpdate = (body: RapierRigidBody, time: number) => {
     const angle = time + offset.current
-    const origin = position as [number, number, number]
 
     body.setNextKinematicTranslation({
-      x: origin[0],
-      y: origin[1] + Math.sin(angle) + 1.1,
-      z: origin[2],
+      x: position[0],
+      y: position[1] + Math.sin(angle) + 1 + config.player.height * 0.1,
+      z: position[2],
     })
   }
 
@@ -32,8 +26,6 @@ export const Limbo: TrapType = ({
   const scaleZ = scaleY
   return (
     <Trap
-      geometry={geometry}
-      material={material}
       position={position}
       scale={[scaleX, scaleY, scaleZ]}
       update={handleUpdate}
