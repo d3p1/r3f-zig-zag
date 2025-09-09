@@ -17,6 +17,10 @@ export const Trap: TrapType = ({
   const bodyRef = useRef<RapierRigidBody>(null!)
 
   useFrame((state) => {
+    if (!update) {
+      return
+    }
+
     update(bodyRef.current, state.clock.getElapsedTime())
   })
 
