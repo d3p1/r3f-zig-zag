@@ -11,6 +11,41 @@ export const config = {
     height: 0.25,
     depth: 4,
   },
+  trap: {
+    twister: {
+      get width() {
+        return config.floor.width * 0.75
+      },
+      get height() {
+        return config.floor.height
+      },
+      get depth() {
+        return config.trap.twister.height
+      },
+    },
+    limbo: {
+      get width() {
+        return config.trap.twister.width
+      },
+      get height() {
+        return config.trap.twister.height
+      },
+      get depth() {
+        return config.trap.twister.depth
+      },
+    },
+    axe: {
+      get width() {
+        return config.floor.width * 0.5
+      },
+      get height() {
+        return config.trap.axe.width
+      },
+      get depth() {
+        return config.floor.height
+      },
+    },
+  },
   player: {
     height: 1,
   },

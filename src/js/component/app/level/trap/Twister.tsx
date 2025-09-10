@@ -13,9 +13,6 @@ export const Twister: TrapType = ({position = [0, 0, 0]}) => {
   const frequency = useRef(
     (Math.random() + 0.2) * (-1) ** Math.round(Math.random()),
   )
-  const scaleX = config.floor.width * 0.75
-  const scaleY = scaleX * 0.1
-  const scaleZ = scaleY
 
   const handleUpdate = (body: RapierRigidBody, time: number) => {
     const angle = time * frequency.current
@@ -29,7 +26,11 @@ export const Twister: TrapType = ({position = [0, 0, 0]}) => {
 
   return (
     <Trap
-      scale={[scaleX, scaleY, scaleZ]}
+      scale={[
+        config.trap.twister.width,
+        config.trap.twister.height,
+        config.trap.twister.depth,
+      ]}
       position={position}
       update={handleUpdate}
     />

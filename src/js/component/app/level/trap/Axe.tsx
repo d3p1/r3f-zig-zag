@@ -10,17 +10,16 @@ import {config} from '../../../../etc/config.ts'
 
 export const Axe: TrapType = ({position = [0, 0, 0]}) => {
   const offset = useRef(Math.random() * 2 * Math.PI)
-  const scaleX = config.floor.width * 0.75
-  const scaleY = scaleX
-  const scaleZ = scaleY * 0.1
 
   const handleUpdate = (body: RapierRigidBody, time: number) => {
     const angle = time + offset.current
 
     body.setNextKinematicTranslation(
       vec3({
-        x: position[0] + Math.sin(angle) * (config.floor.width - scaleX) * 0.5,
-        y: position[1] + scaleY * 0.5,
+        x:
+          position[0] +
+          Math.sin(angle) * (config.floor.width - config.trap.axe.width) * 0.5,
+        y: position[1] + config.trap.axe.height * 0.5,
         z: position[2],
       }),
     )
@@ -28,7 +27,11 @@ export const Axe: TrapType = ({position = [0, 0, 0]}) => {
 
   return (
     <Trap
-      scale={[scaleX, scaleY, scaleZ]}
+      scale={[
+        config.trap.axe.width,
+        config.trap.axe.height,
+        config.trap.axe.depth,
+      ]}
       position={position}
       update={handleUpdate}
     />

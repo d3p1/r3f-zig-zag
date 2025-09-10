@@ -10,9 +10,6 @@ import {config} from '../../../../etc/config.ts'
 
 export const Limbo: TrapType = ({position = [0, 0, 0]}) => {
   const offset = useRef(Math.random() * 2 * Math.PI)
-  const scaleX = config.floor.width * 0.75
-  const scaleY = scaleX * 0.1
-  const scaleZ = scaleY
 
   const handleUpdate = (body: RapierRigidBody, time: number) => {
     const angle = time + offset.current
@@ -22,7 +19,7 @@ export const Limbo: TrapType = ({position = [0, 0, 0]}) => {
         x: position[0],
         y:
           position[1] +
-          scaleY * 0.5 +
+          config.trap.limbo.height * 0.5 +
           (Math.sin(angle) + 1) +
           config.player.height * 0.1,
         z: position[2],
@@ -33,7 +30,11 @@ export const Limbo: TrapType = ({position = [0, 0, 0]}) => {
   return (
     <Trap
       position={position}
-      scale={[scaleX, scaleY, scaleZ]}
+      scale={[
+        config.trap.limbo.width,
+        config.trap.limbo.height,
+        config.trap.limbo.depth,
+      ]}
       update={handleUpdate}
     />
   )
