@@ -2,7 +2,7 @@
  * @description Twister trap
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
-import type {RapierRigidBody} from '@react-three/rapier'
+import {quat, type RapierRigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import * as THREE from 'three'
 import {Trap} from '../Trap.tsx'
@@ -22,7 +22,9 @@ export const Twister: TrapType = ({position = [0, 0, 0]}) => {
     const euler = new THREE.Euler(0, angle, 0)
     const rotation = new THREE.Quaternion().setFromEuler(euler)
 
-    body.setNextKinematicRotation(rotation)
+    body.setNextKinematicRotation(
+      quat({x: rotation.x, y: rotation.y, z: rotation.z, w: rotation.w}),
+    )
   }
 
   return (
