@@ -8,6 +8,10 @@ import * as React from 'react'
 export type TrapProps = {
   position: [number, number, number]
   scale?: [number, number, number]
-  update?: (body: RapierRigidBody, time: number) => void
+  update?: (
+    time: number,
+    body: RapierRigidBody,
+    origin: [number, number, number],
+  ) => void
 }
 export type Trap = React.FC<TrapProps>

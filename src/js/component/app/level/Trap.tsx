@@ -24,7 +24,12 @@ export const Trap: TrapType = ({
       return
     }
 
-    update(bodyRef.current, state.clock.getElapsedTime())
+    const origin: [number, number, number] = [
+      position[0],
+      position[1] + scale[1] * 0.5,
+      position[2],
+    ]
+    update(state.clock.getElapsedTime(), bodyRef.current, origin)
   })
 
   return (

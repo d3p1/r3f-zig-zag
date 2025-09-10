@@ -11,16 +11,20 @@ import {config} from '../../../../etc/config.ts'
 export const Axe: TrapType = ({position = [0, 0, 0]}) => {
   const offset = useRef(Math.random() * 2 * Math.PI)
 
-  const handleUpdate = (body: RapierRigidBody, time: number) => {
+  const handleUpdate = (
+    time: number,
+    body: RapierRigidBody,
+    origin: [number, number, number],
+  ) => {
     const angle = time + offset.current
 
     body.setNextKinematicTranslation(
       vec3({
         x:
-          position[0] +
+          origin[0] +
           Math.sin(angle) * (config.floor.width - config.trap.axe.width) * 0.5,
-        y: position[1] + config.trap.axe.height * 0.5,
-        z: position[2],
+        y: origin[1],
+        z: origin[2],
       }),
     )
   }

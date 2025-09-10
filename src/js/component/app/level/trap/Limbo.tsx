@@ -11,18 +11,18 @@ import {config} from '../../../../etc/config.ts'
 export const Limbo: TrapType = ({position = [0, 0, 0]}) => {
   const offset = useRef(Math.random() * 2 * Math.PI)
 
-  const handleUpdate = (body: RapierRigidBody, time: number) => {
+  const handleUpdate = (
+    time: number,
+    body: RapierRigidBody,
+    origin: [number, number, number],
+  ) => {
     const angle = time + offset.current
 
     body.setNextKinematicTranslation(
       vec3({
-        x: position[0],
-        y:
-          position[1] +
-          config.trap.limbo.height * 0.5 +
-          (Math.sin(angle) + 1) +
-          config.player.height * 0.1,
-        z: position[2],
+        x: origin[0],
+        y: origin[1] + (Math.sin(angle) + 1) + config.player.height * 0.1,
+        z: origin[2],
       }),
     )
   }

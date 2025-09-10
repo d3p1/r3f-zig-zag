@@ -14,7 +14,7 @@ export const Twister: TrapType = ({position = [0, 0, 0]}) => {
     (Math.random() + 0.2) * (-1) ** Math.round(Math.random()),
   )
 
-  const handleUpdate = (body: RapierRigidBody, time: number) => {
+  const handleUpdate = (time: number, body: RapierRigidBody) => {
     const angle = time * frequency.current
     const euler = new THREE.Euler(0, angle, 0)
     const rotation = new THREE.Quaternion().setFromEuler(euler)
