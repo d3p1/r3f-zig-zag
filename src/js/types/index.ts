@@ -20,7 +20,7 @@ export type Level = React.FC<LevelProps>
 export type Trap = React.FC<TrapProps>
 
 export type GameProps = {
-  trapCount: number
-  traps: Level[]
+  trapCount?: number
+  traps?: Level[]
 }
 export type Game = React.FC<GameProps>

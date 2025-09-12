@@ -6,7 +6,7 @@ import {Canvas} from '@react-three/fiber'
 import {OrbitControls} from '@react-three/drei'
 import {Physics} from '@react-three/rapier'
 import {Light} from './app/env/Light.tsx'
-import {Level} from './app/Level.tsx'
+import {Game} from './app/Game.tsx'
 
 export const App = () => {
   return (
@@ -15,7 +15,7 @@ export const App = () => {
 
       <Physics debug={true}>
         <Light />
-        <Level />
+        <Game />
       </Physics>
     </Canvas>
   )
