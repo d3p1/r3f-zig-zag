@@ -10,6 +10,7 @@ import {Limbo} from './game/level/trap/Limbo.tsx'
 import {Axe} from './game/level/trap/Axe.tsx'
 import type {Game as GameType} from '../../types'
 import {config} from '../../etc/config.ts'
+import {Player} from './game/Player.tsx'
 
 export const Game: GameType = ({
   trapCount = 3,
@@ -38,6 +39,8 @@ export const Game: GameType = ({
       })}
 
       <Level position={[0, 0, -((trapCount + 1) * config.floor.depth)]} />
+
+      <Player />
     </>
   )
 }

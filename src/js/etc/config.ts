@@ -48,5 +48,6 @@ export const config = {
   },
   player: {
     height: 1,
+    details: 1,
   },
 }
