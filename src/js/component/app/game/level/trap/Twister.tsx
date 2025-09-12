@@ -6,8 +6,8 @@ import {quat, type RapierRigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import * as THREE from 'three'
 import {Trap} from '../Trap.tsx'
-import type {Trap as TrapType} from '../../../../types'
-import {config} from '../../../../etc/config.ts'
+import type {Trap as TrapType} from '../../../../../types'
+import {config} from '../../../../../etc/config.ts'
 
 export const Twister: TrapType = ({position = [0, 0, 0]}) => {
   const frequency = useRef(
