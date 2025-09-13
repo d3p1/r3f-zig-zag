@@ -10,4 +10,5 @@ export const useStage = create(() => ({
   floorMaterial: new THREE.MeshStandardMaterial({color: 'limegreen'}),
   floorTrapMaterial: new THREE.MeshStandardMaterial({color: 'lime'}),
   trapMaterial: new THREE.MeshStandardMaterial({color: 'red'}),
+  wallMaterial: new THREE.MeshStandardMaterial({color: 'slategray'}),
 }))

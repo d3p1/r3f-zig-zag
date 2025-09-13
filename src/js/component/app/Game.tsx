@@ -10,6 +10,7 @@ import {Limbo} from './game/level/trap/Limbo.tsx'
 import {Axe} from './game/level/trap/Axe.tsx'
 import type {Game as GameType} from '../../types'
 import {config} from '../../etc/config.ts'
+import {Wall} from './game/level/Wall.tsx'
 import {Player} from './game/Player.tsx'
 
 export const Game: GameType = ({
@@ -39,6 +40,41 @@ export const Game: GameType = ({
       })}
 
       <Level position={[0, 0, -((trapCount + 1) * config.floor.depth)]} />
+
+      <Wall
+        position={[
+          -config.floor.width * 0.5 - config.wall.depth * 0.5,
+          config.wall.height * 0.5,
+          config.floor.depth * 0.5 - (trapCount + 2) * config.floor.depth * 0.5,
+        ]}
+        scale={[
+          config.wall.depth,
+          config.wall.height,
+          (trapCount + 2) * config.floor.depth,
+        ]}
+      />
+      <Wall
+        position={[
+          config.floor.width * 0.5 + config.wall.depth * 0.5,
+          config.wall.height * 0.5,
+          config.floor.depth * 0.5 - (trapCount + 2) * config.floor.depth * 0.5,
+        ]}
+        scale={[
+          config.wall.depth,
+          config.wall.height,
+          (trapCount + 2) * config.floor.depth,
+        ]}
+      />
+      <Wall
+        position={[
+          0,
+          config.wall.height * 0.5,
+          config.floor.depth * 0.5 -
+            (trapCount + 2) * config.floor.depth -
+            config.wall.depth * 0.5,
+        ]}
+        scale={[config.floor.width, config.wall.height, config.wall.depth]}
+      />
 
       <Player />
     </>

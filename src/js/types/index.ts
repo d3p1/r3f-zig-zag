@@ -8,6 +8,9 @@ import * as React from 'react'
 export type LevelProps = {
   position: [number, number, number]
 }
+export type WallProps = LevelProps & {
+  scale: [number, number, number]
+}
 export type TrapProps = LevelProps & {
   scale?: [number, number, number]
   update?: (
@@ -17,6 +20,7 @@ export type TrapProps = LevelProps & {
   ) => void
 }
 export type Level = React.FC<LevelProps>
+export type Wall = React.FC<WallProps>
 export type Trap = React.FC<TrapProps>
 
 export type GameProps = {

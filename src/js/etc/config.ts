@@ -11,6 +11,14 @@ export const config = {
     height: 0.25,
     depth: 4,
   },
+  wall: {
+    get height() {
+      return config.player.height * 2
+    },
+    get depth() {
+      return config.floor.height
+    },
+  },
   trap: {
     twister: {
       get width() {
