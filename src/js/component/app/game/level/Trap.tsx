@@ -61,13 +61,19 @@ export const Trap: TrapType = ({
         friction={0}
         ref={bodyRef}
       >
-        <mesh geometry={geometry} material={trapMaterial} scale={scale} />
+        <mesh
+          geometry={geometry}
+          material={trapMaterial}
+          scale={scale}
+          castShadow={true}
+        />
       </RigidBody>
       <mesh
         geometry={geometry}
         material={floorTrapMaterial}
         scale={[config.floor.width, config.floor.height, config.floor.depth]}
         position={[0, -config.floor.height * 0.5, 0]}
+        receiveShadow={true}
       />
     </group>
   )
