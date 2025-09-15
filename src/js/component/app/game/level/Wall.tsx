@@ -12,7 +12,12 @@ export const Wall: WallType = ({position, scale}) => {
 
   return (
     <RigidBody type="fixed" restitution={0.2} friction={0} position={position}>
-      <mesh geometry={geometry} material={material} scale={scale} />
+      <mesh
+        geometry={geometry}
+        material={material}
+        scale={scale}
+        receiveShadow={true}
+      />
     </RigidBody>
   )
 }
