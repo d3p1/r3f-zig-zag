@@ -20,7 +20,7 @@ export const Trap: TrapType = ({
   const floorTrapMaterial = useStage((state) => state.floorTrapMaterial)
 
   useFrame((state) => {
-    if (!update) {
+    if (!update || !bodyRef?.current) {
       return
     }
 
