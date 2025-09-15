@@ -2,6 +2,7 @@
  * @description Game
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
+import {CuboidCollider, RigidBody} from '@react-three/rapier'
 import * as React from 'react'
 import {useMemo} from 'react'
 import {Level} from './game/Level.tsx'
@@ -75,6 +76,22 @@ export const Game: GameType = ({
         ]}
         scale={[config.floor.width, config.wall.height, config.wall.depth]}
       />
+
+      <RigidBody type="fixed" colliders={false} restitution={0} friction={1}>
+        <CuboidCollider
+          args={[
+            config.floor.width * 0.5,
+            config.floor.height * 0.5,
+            (2 + trapCount) * config.floor.depth * 0.5,
+          ]}
+          position={[
+            0,
+            -config.floor.height * 0.5,
+            config.floor.depth * 0.5 -
+              (trapCount + 2) * config.floor.depth * 0.5,
+          ]}
+        />
+      </RigidBody>
 
       <Player />
     </>
