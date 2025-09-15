@@ -2,9 +2,19 @@
  * @description Types
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
+import * as THREE from 'three'
 import type {RapierRigidBody} from '@react-three/rapier'
 import * as React from 'react'
 
+export type Stage = {
+  geometry: THREE.BufferGeometry
+  floorMaterial: THREE.MeshStandardMaterial
+  floorTrapMaterial: THREE.MeshStandardMaterial
+  trapMaterial: THREE.MeshStandardMaterial
+  wallMaterial: THREE.MeshStandardMaterial
+  trapCount: number
+  getTotalSteps: () => number
+}
 export type LevelProps = {
   position: [number, number, number]
 }
@@ -24,7 +34,6 @@ export type Wall = React.FC<WallProps>
 export type Trap = React.FC<TrapProps>
 
 export type GameProps = {
-  trapCount?: number
   traps?: Level[]
 }
 export type Game = React.FC<GameProps>

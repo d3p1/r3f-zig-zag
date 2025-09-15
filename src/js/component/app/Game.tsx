@@ -5,6 +5,7 @@
 import {CuboidCollider, RigidBody} from '@react-three/rapier'
 import * as React from 'react'
 import {useMemo} from 'react'
+import {useStage} from '../../store/useStage.ts'
 import {Level} from './game/Level.tsx'
 import {Twister} from './game/level/trap/Twister.tsx'
 import {Limbo} from './game/level/trap/Limbo.tsx'
@@ -14,10 +15,10 @@ import {config} from '../../etc/config.ts'
 import {Wall} from './game/level/Wall.tsx'
 import {Player} from './game/Player.tsx'
 
-export const Game: GameType = ({
-  trapCount = 3,
-  traps = [Twister, Limbo, Axe],
-}) => {
+export const Game: GameType = ({traps = [Twister, Limbo, Axe]}) => {
+  const trapCount = useStage((state) => state.trapCount)
+  const totalSteps = useStage((state) => state.getTotalSteps())
+
   const trapComponents = useMemo(() => {
     const trapComponents = []
 
@@ -46,24 +47,24 @@ export const Game: GameType = ({
         position={[
           -config.floor.width * 0.5 - config.wall.depth * 0.5,
           config.wall.height * 0.5,
-          config.floor.depth * 0.5 - (trapCount + 2) * config.floor.depth * 0.5,
+          config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
         ]}
         scale={[
           config.wall.depth,
           config.wall.height,
-          (trapCount + 2) * config.floor.depth,
+          totalSteps * config.floor.depth,
         ]}
       />
       <Wall
         position={[
           config.floor.width * 0.5 + config.wall.depth * 0.5,
           config.wall.height * 0.5,
-          config.floor.depth * 0.5 - (trapCount + 2) * config.floor.depth * 0.5,
+          config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
         ]}
         scale={[
           config.wall.depth,
           config.wall.height,
-          (trapCount + 2) * config.floor.depth,
+          totalSteps * config.floor.depth,
         ]}
       />
       <Wall
@@ -71,7 +72,7 @@ export const Game: GameType = ({
           0,
           config.wall.height * 0.5,
           config.floor.depth * 0.5 -
-            (trapCount + 2) * config.floor.depth -
+            totalSteps * config.floor.depth -
             config.wall.depth * 0.5,
         ]}
         scale={[config.floor.width, config.wall.height, config.wall.depth]}
@@ -82,13 +83,12 @@ export const Game: GameType = ({
           args={[
             config.floor.width * 0.5,
             config.floor.height * 0.5,
-            (2 + trapCount) * config.floor.depth * 0.5,
+            totalSteps * config.floor.depth * 0.5,
           ]}
           position={[
             0,
             -config.floor.height * 0.5,
-            config.floor.depth * 0.5 -
-              (trapCount + 2) * config.floor.depth * 0.5,
+            config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
           ]}
         />
       </RigidBody>
