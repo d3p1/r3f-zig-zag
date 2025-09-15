@@ -12,7 +12,7 @@ export const Player = () => {
       restitution={0.2}
       friction={1}
       position={[0, config.player.height * 0.5, 0]}
-      colliders="hull"
+      colliders="ball"
     >
       <mesh castShadow={true}>
         <icosahedronGeometry
