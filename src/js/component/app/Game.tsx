@@ -37,11 +37,11 @@ export const Game: GameType = ({traps = [Twister, Limbo, Axe]}) => {
       {trapComponents.map((trap, index) => {
         return React.createElement(trap, {
           key: index,
-          position: [0, 0, -((index + 1) * config.floor.depth)],
+          position: [0, 0, -((index + 1) * config.floor.height)],
         })
       })}
 
-      <Level position={[0, 0, -((trapCount + 1) * config.floor.depth)]} />
+      <Level position={[0, 0, -((trapCount + 1) * config.floor.height)]} />
 
       <Wall />
 
@@ -49,13 +49,13 @@ export const Game: GameType = ({traps = [Twister, Limbo, Axe]}) => {
         <CuboidCollider
           args={[
             config.floor.width * 0.5,
-            config.floor.height * 0.5,
-            totalSteps * config.floor.depth * 0.5,
+            config.floor.depth * 0.5,
+            totalSteps * config.floor.height * 0.5,
           ]}
           position={[
             0,
-            -config.floor.height * 0.5,
-            config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
+            -config.floor.depth * 0.5,
+            config.floor.height * 0.5 - totalSteps * config.floor.height * 0.5,
           ]}
         />
       </RigidBody>

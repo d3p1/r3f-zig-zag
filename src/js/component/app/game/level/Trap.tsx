@@ -71,8 +71,8 @@ export const Trap: TrapType = ({
       <mesh
         geometry={geometry}
         material={floorTrapMaterial}
-        scale={[config.floor.width, config.floor.height, config.floor.depth]}
-        position={[0, -config.floor.height * 0.5, 0]}
+        scale={[config.floor.width, config.floor.depth, config.floor.height]}
+        position={[0, -config.floor.depth * 0.5, 0]}
         receiveShadow={true}
       />
     </group>

@@ -19,14 +19,14 @@ export const Level: LevelType = ({position}) => {
    */
   const origin: [number, number, number] = [
     position[0],
-    position[1] - config.floor.height * 0.5,
+    position[1] - config.floor.depth * 0.5,
     position[2],
   ]
   return (
     <mesh
       geometry={geometry}
       material={material}
-      scale={[config.floor.width, config.floor.height, config.floor.depth]}
+      scale={[config.floor.width, config.floor.depth, config.floor.height]}
       receiveShadow={true}
       position={origin}
     />

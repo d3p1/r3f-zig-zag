@@ -8,15 +8,15 @@ export const config = {
       y: 0,
     },
     width: 4,
-    height: 0.25,
-    depth: 4,
+    height: 4,
+    depth: 0.25,
   },
   wall: {
     get height() {
       return config.player.height * 2
     },
     get depth() {
-      return config.floor.height
+      return config.floor.depth
     },
   },
   trap: {
@@ -25,7 +25,7 @@ export const config = {
         return config.floor.width * 0.75
       },
       get height() {
-        return config.floor.height
+        return config.floor.depth
       },
       get depth() {
         return config.trap.twister.height
@@ -50,7 +50,7 @@ export const config = {
         return config.trap.axe.width
       },
       get depth() {
-        return config.floor.height
+        return config.floor.depth
       },
     },
   },

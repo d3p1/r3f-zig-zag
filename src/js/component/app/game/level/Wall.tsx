@@ -19,12 +19,12 @@ export const Wall = () => {
         position={[
           config.floor.width * 0.5 + config.wall.depth * 0.5,
           config.wall.height * 0.5,
-          config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
+          config.floor.height * 0.5 - totalSteps * config.floor.height * 0.5,
         ]}
         scale={[
           config.wall.depth,
           config.wall.height,
-          totalSteps * config.floor.depth,
+          totalSteps * config.floor.height,
         ]}
       />
       <mesh
@@ -33,12 +33,12 @@ export const Wall = () => {
         position={[
           -(config.floor.width * 0.5 + config.wall.depth * 0.5),
           config.wall.height * 0.5,
-          config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
+          config.floor.height * 0.5 - totalSteps * config.floor.height * 0.5,
         ]}
         scale={[
           config.wall.depth,
           config.wall.height,
-          totalSteps * config.floor.depth,
+          totalSteps * config.floor.height,
         ]}
       />
       <mesh
@@ -47,8 +47,8 @@ export const Wall = () => {
         position={[
           0,
           config.wall.height * 0.5,
-          config.floor.depth * 0.5 -
-            totalSteps * config.floor.depth -
+          config.floor.height * 0.5 -
+            totalSteps * config.floor.height -
             config.wall.depth * 0.5,
         ]}
         scale={[config.floor.width, config.wall.height, config.wall.depth]}
