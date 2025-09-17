@@ -43,40 +43,7 @@ export const Game: GameType = ({traps = [Twister, Limbo, Axe]}) => {
 
       <Level position={[0, 0, -((trapCount + 1) * config.floor.depth)]} />
 
-      <Wall
-        position={[
-          -config.floor.width * 0.5 - config.wall.depth * 0.5,
-          config.wall.height * 0.5,
-          config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
-        ]}
-        scale={[
-          config.wall.depth,
-          config.wall.height,
-          totalSteps * config.floor.depth,
-        ]}
-      />
-      <Wall
-        position={[
-          config.floor.width * 0.5 + config.wall.depth * 0.5,
-          config.wall.height * 0.5,
-          config.floor.depth * 0.5 - totalSteps * config.floor.depth * 0.5,
-        ]}
-        scale={[
-          config.wall.depth,
-          config.wall.height,
-          totalSteps * config.floor.depth,
-        ]}
-      />
-      <Wall
-        position={[
-          0,
-          config.wall.height * 0.5,
-          config.floor.depth * 0.5 -
-            totalSteps * config.floor.depth -
-            config.wall.depth * 0.5,
-        ]}
-        scale={[config.floor.width, config.wall.height, config.wall.depth]}
-      />
+      <Wall />
 
       <RigidBody type="fixed" colliders={false} restitution={0} friction={1}>
         <CuboidCollider
