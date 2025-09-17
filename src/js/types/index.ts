@@ -16,7 +16,6 @@ export type Stage = {
   trapMaterial: THREE.MeshStandardMaterial
   wallMaterial: THREE.MeshStandardMaterial
   trapCount: number
-  getTotalSteps: () => number
 }
 export type LevelProps = {
   position: [number, number, number]

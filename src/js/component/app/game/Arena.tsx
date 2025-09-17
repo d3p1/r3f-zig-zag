@@ -6,11 +6,37 @@ import type {Arena as ArenaType} from '../../../types'
 import {CuboidCollider, RigidBody} from '@react-three/rapier'
 import {useStage} from '../../../store/useStage.ts'
 import {config} from '../../../etc/config.ts'
+import {Mathy} from '../../../utils/Mathy.ts'
 
 export const Arena: ArenaType = ({children}) => {
-  const totalSteps = useStage((state) => state.getTotalSteps())
   const geometry = useStage((state) => state.geometry)
   const material = useStage((state) => state.wallMaterial)
+
+  /**
+   * @note Total steps is the number of traps plus the start and end steps
+   */
+  const totalSteps = useStage((state) => state.trapCount + 2)
+
+  /**
+   * @note Calculate arena total distance required for many calculations
+   */
+  const totalDistance = totalSteps * config.floor.height
+
+  /**
+   * @note Calculate arena start, middle and end required for many calculations
+   */
+  const arenaStart = config.floor.height * 0.5
+  const arenaEnd = config.floor.height * 0.5 - totalDistance
+  const arenaMiddle = Mathy.lerp(arenaStart, arenaEnd, 0.5)
+
+  /**
+   * @note Calculate side wall scale
+   */
+  const sideWallScale: [number, number, number] = [
+    config.wall.depth,
+    config.wall.height,
+    totalDistance,
+  ]
 
   return (
     <>
@@ -26,13 +52,9 @@ export const Arena: ArenaType = ({children}) => {
           position={[
             config.floor.width * 0.5 + config.wall.depth * 0.5,
             config.wall.height * 0.5,
-            config.floor.height * 0.5 - totalSteps * config.floor.height * 0.5,
+            arenaMiddle,
           ]}
-          scale={[
-            config.wall.depth,
-            config.wall.height,
-            totalSteps * config.floor.height,
-          ]}
+          scale={sideWallScale}
         />
         <mesh
           geometry={geometry}
@@ -40,13 +62,9 @@ export const Arena: ArenaType = ({children}) => {
           position={[
             -(config.floor.width * 0.5 + config.wall.depth * 0.5),
             config.wall.height * 0.5,
-            config.floor.height * 0.5 - totalSteps * config.floor.height * 0.5,
+            arenaMiddle,
           ]}
-          scale={[
-            config.wall.depth,
-            config.wall.height,
-            totalSteps * config.floor.height,
-          ]}
+          scale={sideWallScale}
         />
         <mesh
           geometry={geometry}
@@ -54,9 +72,7 @@ export const Arena: ArenaType = ({children}) => {
           position={[
             0,
             config.wall.height * 0.5,
-            config.floor.height * 0.5 -
-              totalSteps * config.floor.height -
-              config.wall.depth * 0.5,
+            arenaEnd - config.wall.depth * 0.5,
           ]}
           scale={[config.floor.width, config.wall.height, config.wall.depth]}
         />
@@ -65,13 +81,9 @@ export const Arena: ArenaType = ({children}) => {
           args={[
             config.floor.width * 0.5,
             config.floor.depth * 0.5,
-            totalSteps * config.floor.height * 0.5,
+            totalDistance * 0.5,
           ]}
-          position={[
-            0,
-            -config.floor.depth * 0.5,
-            config.floor.height * 0.5 - totalSteps * config.floor.height * 0.5,
-          ]}
+          position={[0, -config.floor.depth * 0.5, arenaMiddle]}
           restitution={0.2}
           friction={1}
         />
