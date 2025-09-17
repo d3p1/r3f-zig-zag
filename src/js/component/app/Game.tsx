@@ -30,18 +30,18 @@ export const Game: GameType = ({traps = [Twister, Limbo, Axe]}) => {
 
   return (
     <>
-      <Level position={[0, 0, 0]} />
+      <Arena>
+        <Level position={[0, 0, 0]} />
 
-      {trapComponents.map((trap, index) => {
-        return React.createElement(trap, {
-          key: index,
-          position: [0, 0, -((index + 1) * config.floor.height)],
-        })
-      })}
+        {trapComponents.map((trap, index) => {
+          return React.createElement(trap, {
+            key: index,
+            position: [0, 0, -((index + 1) * config.floor.height)],
+          })
+        })}
 
-      <Level position={[0, 0, -((trapCount + 1) * config.floor.height)]} />
-
-      <Arena />
+        <Level position={[0, 0, -((trapCount + 1) * config.floor.height)]} />
+      </Arena>
 
       <Player />
     </>

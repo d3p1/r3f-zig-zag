@@ -6,6 +6,9 @@ import * as THREE from 'three'
 import type {RapierRigidBody} from '@react-three/rapier'
 import * as React from 'react'
 
+export type ArenaProps = {
+  children: React.ReactNode
+}
 export type Stage = {
   geometry: THREE.BufferGeometry
   floorMaterial: THREE.MeshStandardMaterial
@@ -33,3 +36,4 @@ export type GameProps = {
   traps?: Level[]
 }
 export type Game = React.FC<GameProps>
+export type Arena = React.FC<ArenaProps>

@@ -2,11 +2,12 @@
  * @description Wall
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
+import type {Arena as ArenaType} from '../../../types'
 import {CuboidCollider, RigidBody} from '@react-three/rapier'
 import {useStage} from '../../../store/useStage.ts'
 import {config} from '../../../etc/config.ts'
 
-export const Arena = () => {
+export const Arena: ArenaType = ({children}) => {
   const totalSteps = useStage((state) => state.getTotalSteps())
   const geometry = useStage((state) => state.geometry)
   const material = useStage((state) => state.wallMaterial)
@@ -59,9 +60,7 @@ export const Arena = () => {
           ]}
           scale={[config.floor.width, config.wall.height, config.wall.depth]}
         />
-      </RigidBody>
 
-      <RigidBody type="fixed" colliders={false} restitution={0} friction={1}>
         <CuboidCollider
           args={[
             config.floor.width * 0.5,
@@ -73,8 +72,12 @@ export const Arena = () => {
             -config.floor.depth * 0.5,
             config.floor.height * 0.5 - totalSteps * config.floor.height * 0.5,
           ]}
+          restitution={0.2}
+          friction={1}
         />
       </RigidBody>
+
+      {children}
     </>
   )
 }
