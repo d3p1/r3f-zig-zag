@@ -1,10 +1,13 @@
 /**
  * @description Level
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
+ * @note        It is considered that each `level` component is an
+ *              obstacle/challenge/step that the player must
+ *              overcome
  */
-import type {Level as LevelType} from '../../../types'
-import {useStage} from '../../../store/useStage.ts'
-import {config} from '../../../etc/config.ts'
+import type {Level as LevelType} from '../../../../types'
+import {useStage} from '../../../../store/useStage.ts'
+import {config} from '../../../../etc/config.ts'
 
 export const Level: LevelType = ({position}) => {
   const geometry = useStage((state) => state.geometry)

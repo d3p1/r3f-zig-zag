@@ -5,8 +5,8 @@
 import {type RapierRigidBody, vec3} from '@react-three/rapier'
 import {useRef} from 'react'
 import {Trap} from '../Trap.tsx'
-import type {Trap as TrapType} from '../../../../../types'
-import {config} from '../../../../../etc/config.ts'
+import type {Trap as TrapType} from '../../../../../../types'
+import {config} from '../../../../../../etc/config.ts'
 
 export const Limbo: TrapType = ({position = [0, 0, 0]}) => {
   const offset = useRef(Math.random() * 2 * Math.PI)

@@ -5,9 +5,9 @@
 import {useFrame} from '@react-three/fiber'
 import {type RapierRigidBody, RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
-import {useStage} from '../../../../store/useStage.ts'
-import type {Trap as TrapType} from '../../../../types'
-import {config} from '../../../../etc/config.ts'
+import {useStage} from '../../../../../store/useStage.ts'
+import type {Trap as TrapType} from '../../../../../types'
+import {config} from '../../../../../etc/config.ts'
 
 export const Trap: TrapType = ({
   position,
