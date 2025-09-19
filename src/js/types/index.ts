@@ -6,6 +6,13 @@ import * as THREE from 'three'
 import type {RapierRigidBody} from '@react-three/rapier'
 import * as React from 'react'
 
+export const CONTROL = {
+  FORWARD: 'forward',
+  RIGHTWARD: 'rightward',
+  BACKWARD: 'backward',
+  LEFTWARD: 'leftward',
+  JUMP: 'jump',
+} as const
 export type ArenaProps = {
   children: React.ReactNode
 }
