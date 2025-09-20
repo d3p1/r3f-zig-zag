@@ -16,7 +16,7 @@ export const CONTROL = {
 export type ArenaProps = {
   children: React.ReactNode
 }
-export type Stage = {
+export type StageState = {
   geometry: THREE.BufferGeometry
   floorMaterial: THREE.MeshStandardMaterial
   floorTrapMaterial: THREE.MeshStandardMaterial

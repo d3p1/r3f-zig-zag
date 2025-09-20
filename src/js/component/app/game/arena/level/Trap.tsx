@@ -5,7 +5,7 @@
 import {useFrame} from '@react-three/fiber'
 import {type RapierRigidBody, RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
-import {useStage} from '../../../../../store/useStage.ts'
+import {useStageStore} from '../../../../../store/stage.ts'
 import type {Trap as TrapType} from '../../../../../types'
 import {config} from '../../../../../etc/config.ts'
 
@@ -15,9 +15,9 @@ export const Trap: TrapType = ({
   update = () => {},
 }) => {
   const bodyRef = useRef<RapierRigidBody>(null!)
-  const geometry = useStage((state) => state.geometry)
-  const trapMaterial = useStage((state) => state.trapMaterial)
-  const floorTrapMaterial = useStage((state) => state.floorTrapMaterial)
+  const geometry = useStageStore((state) => state.geometry)
+  const trapMaterial = useStageStore((state) => state.trapMaterial)
+  const floorTrapMaterial = useStageStore((state) => state.floorTrapMaterial)
 
   useFrame((state) => {
     if (!update || !bodyRef?.current) {

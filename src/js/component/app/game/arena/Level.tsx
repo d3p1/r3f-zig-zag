@@ -6,12 +6,12 @@
  *              overcome
  */
 import type {Level as LevelType} from '../../../../types'
-import {useStage} from '../../../../store/useStage.ts'
+import {useStageStore} from '../../../../store/stage.ts'
 import {config} from '../../../../etc/config.ts'
 
 export const Level: LevelType = ({position}) => {
-  const geometry = useStage((state) => state.geometry)
-  const material = useStage((state) => state.floorMaterial)
+  const geometry = useStageStore((state) => state.geometry)
+  const material = useStageStore((state) => state.floorMaterial)
 
   /**
    * @note It is moved the mesh half of its height,

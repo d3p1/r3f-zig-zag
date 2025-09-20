@@ -4,7 +4,7 @@
  */
 import * as React from 'react'
 import {useMemo} from 'react'
-import {useStage} from '../../store/useStage.ts'
+import {useStageStore} from '../../store/stage.ts'
 import {Arena} from './game/Arena.tsx'
 import {Level} from './game/arena/Level.tsx'
 import {Twister} from './game/arena/level/trap/Twister.tsx'
@@ -15,7 +15,7 @@ import {config} from '../../etc/config.ts'
 import {Player} from './game/Player.tsx'
 
 export const Game: GameType = ({traps = [Twister, Limbo, Axe]}) => {
-  const trapCount = useStage((state) => state.trapCount)
+  const trapCount = useStageStore((state) => state.trapCount)
 
   const trapComponents = useMemo(() => {
     const trapComponents = []

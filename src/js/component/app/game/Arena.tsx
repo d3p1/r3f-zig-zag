@@ -4,18 +4,18 @@
  */
 import type {Arena as ArenaType} from '../../../types'
 import {CuboidCollider, RigidBody} from '@react-three/rapier'
-import {useStage} from '../../../store/useStage.ts'
+import {useStageStore} from '../../../store/stage.ts'
 import {config} from '../../../etc/config.ts'
 import {Mathy} from '../../../utils/Mathy.ts'
 
 export const Arena: ArenaType = ({children}) => {
-  const geometry = useStage((state) => state.geometry)
-  const material = useStage((state) => state.wallMaterial)
+  const geometry = useStageStore((state) => state.geometry)
+  const material = useStageStore((state) => state.wallMaterial)
 
   /**
    * @note Total steps is the number of traps plus the start and end steps
    */
-  const totalSteps = useStage((state) => state.trapCount + 2)
+  const totalSteps = useStageStore((state) => state.trapCount + 2)
 
   /**
    * @note Calculate arena total distance required for many calculations

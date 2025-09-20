@@ -4,9 +4,9 @@
  */
 import * as THREE from 'three'
 import {create} from 'zustand/react'
-import type {Stage} from '../types'
+import type {StageState} from '../types'
 
-export const useStage = create<Stage>(() => ({
+export const useStageStore = create<StageState>(() => ({
   geometry: new THREE.BoxGeometry(),
   floorMaterial: new THREE.MeshStandardMaterial({color: 'limegreen'}),
   floorTrapMaterial: new THREE.MeshStandardMaterial({color: 'lime'}),
