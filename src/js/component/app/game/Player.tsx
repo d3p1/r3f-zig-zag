@@ -13,7 +13,7 @@ const TORQUE_IMPULSE = 0.05
 const JUMP_IMPULSE = FORCE_IMPULSE * 5
 
 export const Player = () => {
-  const player = useRef<RapierRigidBody>(null!)
+  const playerRef = useRef<RapierRigidBody>(null!)
   const [sub] = useKeyboardControls<(typeof CONTROL)[keyof typeof CONTROL]>()
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export const Player = () => {
         forceImpulse.y += JUMP_IMPULSE
       }
 
-      player.current.applyImpulse(vec3(forceImpulse), true)
-      player.current.applyTorqueImpulse(vec3(torqueImpulse), true)
+      playerRef.current.applyImpulse(vec3(forceImpulse), true)
+      playerRef.current.applyTorqueImpulse(vec3(torqueImpulse), true)
     })
 
     return () => {
@@ -51,7 +51,7 @@ export const Player = () => {
       friction={1}
       position={[0, config.player.height * 0.5, 0]}
       colliders="ball"
-      ref={player}
+      ref={playerRef}
     >
       <mesh castShadow={true}>
         <icosahedronGeometry
