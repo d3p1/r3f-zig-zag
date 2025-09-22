@@ -57,5 +57,16 @@ export const config = {
   player: {
     height: 1,
     details: 1,
+    control: {
+      force: 0.5,
+      torque: 0.05,
+      get jump() {
+        return config.player.control.force * 5
+      },
+      damping: {
+        linear: 0.5,
+        angular: 0.5,
+      },
+    },
   },
 }
