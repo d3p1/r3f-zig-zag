@@ -60,8 +60,17 @@ export const config = {
     control: {
       force: 0.5,
       torque: 0.05,
-      get jump() {
-        return config.player.control.force * 5
+      jump: {
+        get force() {
+          return config.player.control.force * 5
+        },
+        get maxDistance() {
+          return config.wall.height * 0.25
+        },
+        ray: {
+          displacement: -0.1,
+          maxToi: 10,
+        },
       },
       damping: {
         linear: 0.5,
