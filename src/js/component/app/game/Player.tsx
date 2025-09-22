@@ -19,6 +19,8 @@ export const Player = () => {
       friction={1}
       position={[0, config.player.height * 0.5, 0]}
       colliders="ball"
+      linearDamping={config.player.control.damping.linear}
+      angularDamping={config.player.control.damping.angular}
       ref={playerRef}
     >
       <mesh castShadow={true}>
