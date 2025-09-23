@@ -13,6 +13,9 @@ export const CONTROL = {
   LEFTWARD: 'leftward',
   JUMP: 'jump',
 } as const
+export type ControlState = {
+  [k in (typeof CONTROL)[keyof typeof CONTROL]]: boolean
+}
 export type ArenaProps = {
   children: React.ReactNode
 }
