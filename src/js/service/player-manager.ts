@@ -2,13 +2,9 @@
  * @description Player manager
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
-import {World} from '@dimforge/rapier3d'
-import {
-  type RapierContext,
-  type RapierRigidBody,
-  vec3,
-} from '@react-three/rapier'
-import type {ControlState} from '../types'
+import {World, Ray} from '@dimforge/rapier3d'
+import {type RapierRigidBody, vec3} from '@react-three/rapier'
+import type {ControlState, Vec3} from '../types'
 import {config as baseConfig} from '../etc/config.ts'
 
 export class PlayerManager {
@@ -23,11 +19,6 @@ export class PlayerManager {
   readonly #world: World
 
   /**
-   * @type {RapierContext}
-   */
-  readonly #rapierContext: RapierContext
-
-  /**
    * @type {object}
    */
   readonly #config: typeof baseConfig.player
@@ -37,18 +28,15 @@ export class PlayerManager {
    *
    * @param {RapierRigidBody} player
    * @param {World}           world
-   * @param {RapierContext}   rapierContext
    * @param {object}          config
    */
   constructor(
     player: RapierRigidBody,
     world: World,
-    rapierContext: RapierContext,
     config: typeof baseConfig.player,
   ) {
     this.#player = player
     this.#world = world
-    this.#rapierContext = rapierContext
     this.#config = config
   }
 
@@ -98,7 +86,7 @@ export class PlayerManager {
     origin.y -=
       this.#config.height * 0.5 - this.#config.control.jump.ray.displacement
 
-    const ray = new this.#rapierContext.Ray(vec3(origin), vec3(direction))
+    const ray = this.#createRay(origin, direction)
     const hit = this.#world.castRay(
       ray,
       this.#config.control.jump.ray.maxToi,
@@ -109,5 +97,16 @@ export class PlayerManager {
     }
 
     return 0
+  }
+
+  /**
+   * Create ray
+   *
+   * @param   {{x: number, y: number, z: number}} origin
+   * @param   {{x: number, y: number, z: number}} destination
+   * @returns {Ray}
+   */
+  #createRay(origin: Vec3, destination: Vec3): Ray {
+    return new Ray(vec3(origin), vec3(destination))
   }
 }

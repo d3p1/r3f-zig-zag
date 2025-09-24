@@ -6,6 +6,11 @@ import * as THREE from 'three'
 import type {RapierRigidBody} from '@react-three/rapier'
 import * as React from 'react'
 
+export interface Vec3 {
+  x: number
+  y: number
+  z: number
+}
 export const CONTROL = {
   FORWARD: 'forward',
   RIGHTWARD: 'rightward',
