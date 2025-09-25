@@ -58,14 +58,14 @@ export const config = {
     height: 1,
     details: 1,
     control: {
-      force: 0.5,
-      torque: 0.05,
+      force: 3,
+      torque: 0.3,
       jump: {
         get force() {
           return config.player.control.force * 5
         },
         get maxDistance() {
-          return config.wall.height * 0.25
+          return config.wall.height * 0.05
         },
         ray: {
           displacement: -0.1,

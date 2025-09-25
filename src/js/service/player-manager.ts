@@ -43,26 +43,42 @@ export class PlayerManager {
   /**
    * Move
    *
-   * @param   {{forward: boolean; rightward: boolean; backward: boolean; leftward: boolean; jump: boolean}} control
+   * @param   {{
+   *              forward: boolean;
+   *              rightward: boolean;
+   *              backward: boolean;
+   *              leftward: boolean;
+   *              jump: boolean
+   *          }}       control
+   * @param   {number} deltaTime
    * @returns {void}
    */
-  move(control: ControlState): void {
+  move(control: ControlState, deltaTime: number): void {
     const force = {x: 0, y: 0, z: 0}
     const torque = {x: 0, y: 0, z: 0}
 
     if (control.forward || control.backward) {
-      force.z += this.#config.control.force * (-1) ** Number(control.forward)
-      torque.x += this.#config.control.torque * (-1) ** Number(control.forward)
+      force.z +=
+        this.#config.control.force * (-1) ** Number(control.forward) * deltaTime
+      torque.x +=
+        this.#config.control.torque *
+        (-1) ** Number(control.forward) *
+        deltaTime
     }
 
     if (control.leftward || control.rightward) {
-      force.x += this.#config.control.force * (-1) ** Number(control.leftward)
+      force.x +=
+        this.#config.control.force *
+        (-1) ** Number(control.leftward) *
+        deltaTime
       torque.z +=
-        this.#config.control.torque * (-1) ** Number(control.rightward)
+        this.#config.control.torque *
+        (-1) ** Number(control.rightward) *
+        deltaTime
     }
 
     if (control.jump) {
-      force.y += this.#processJump()
+      force.y += this.#processJump() * deltaTime
     }
 
     this.#player.applyImpulse(vec3(force), true)
