@@ -43,7 +43,7 @@ export class PlayerManager {
   /**
    * Move
    *
-   * @param   {{forward: boolean, rightward: boolean, backward: boolean, leftward: boolean, jump: boolean}} control
+   * @param   {{forward: boolean; rightward: boolean; backward: boolean; leftward: boolean; jump: boolean}} control
    * @returns {void}
    */
   move(control: ControlState): void {
