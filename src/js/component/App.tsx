@@ -23,7 +23,7 @@ export const App = () => {
       <Canvas camera={{position: [1, 1, 5]}} shadows={true}>
         <OrbitControls />
 
-        <Physics debug={true}>
+        <Physics debug={false}>
           <Light />
           <Game />
         </Physics>
