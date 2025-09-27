@@ -41,20 +41,22 @@ export class PlayerManager {
 
     if (control.forward || control.backward) {
       force.z +=
-        this.#config.control.force * (-1) ** Number(control.forward) * deltaTime
+        this.#config.movement.force *
+        (-1) ** Number(control.forward) *
+        deltaTime
       torque.x +=
-        this.#config.control.torque *
+        this.#config.movement.torque *
         (-1) ** Number(control.forward) *
         deltaTime
     }
 
     if (control.leftward || control.rightward) {
       force.x +=
-        this.#config.control.force *
+        this.#config.movement.force *
         (-1) ** Number(control.leftward) *
         deltaTime
       torque.z +=
-        this.#config.control.torque *
+        this.#config.movement.torque *
         (-1) ** Number(control.rightward) *
         deltaTime
     }
@@ -70,20 +72,17 @@ export class PlayerManager {
    * @returns {number}
    */
   jump(origin: Vec3, world: World): number {
-    const direction = {x: 0, y: -1, z: 0}
-
     /**
      * @note Current player position is calculated from its center.
      *       That is why we need to subtract half its height and a
      *       little more to cast the ray just below the player
      */
-    origin.y -=
-      this.#config.height * 0.5 - this.#config.control.jump.ray.displacement
+    origin.y -= this.#config.movement.jump.ray.displacement
 
-    const ray = this.#createRay(origin, direction)
-    const hit = world.castRay(ray, this.#config.control.jump.ray.maxToi, true)
-    if (hit && hit?.timeOfImpact < this.#config.control.jump.maxDistance) {
-      return this.#config.control.jump.force
+    const ray = this.#createRay(origin, {x: 0, y: -1, z: 0})
+    const hit = world.castRay(ray, this.#config.movement.jump.ray.maxToi, true)
+    if (hit && hit?.timeOfImpact < this.#config.movement.jump.maxDistance) {
+      return this.#config.movement.jump.force
     }
 
     return 0

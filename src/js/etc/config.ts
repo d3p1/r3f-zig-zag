@@ -57,18 +57,20 @@ export const config = {
   player: {
     height: 1,
     details: 1,
-    control: {
+    movement: {
       force: 3,
       torque: 0.3,
       jump: {
         get force() {
-          return config.player.control.force * 0.75
+          return config.player.movement.force * 0.75
         },
         get maxDistance() {
           return config.wall.height * 0.05
         },
         ray: {
-          displacement: -0.1,
+          get displacement() {
+            return config.player.height * 0.5 + 0.1
+          },
           maxToi: 10,
         },
       },
