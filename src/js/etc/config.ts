@@ -62,7 +62,7 @@ export const config = {
       torque: 0.3,
       jump: {
         get force() {
-          return config.player.control.force * 5
+          return config.player.control.force * 0.75
         },
         get maxDistance() {
           return config.wall.height * 0.05

@@ -3,21 +3,11 @@
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
 import {World, Ray} from '@dimforge/rapier3d'
-import {type RapierRigidBody, vec3} from '@react-three/rapier'
+import {vec3} from '@react-three/rapier'
 import type {ControlState, Vec3} from '../types'
 import {config as baseConfig} from '../etc/config.ts'
 
 export class PlayerManager {
-  /**
-   * @type {RapierRigidBody}
-   */
-  readonly #player: RapierRigidBody
-
-  /**
-   * @type {World}
-   */
-  readonly #world: World
-
   /**
    * @type {object}
    */
@@ -26,34 +16,26 @@ export class PlayerManager {
   /**
    * Constructor
    *
-   * @param {RapierRigidBody} player
-   * @param {World}           world
-   * @param {object}          config
+   * @param {object} config
    */
-  constructor(
-    player: RapierRigidBody,
-    world: World,
-    config: typeof baseConfig.player,
-  ) {
-    this.#player = player
-    this.#world = world
+  constructor(config: typeof baseConfig.player) {
     this.#config = config
   }
 
   /**
    * Move
    *
+   * @param   {number} deltaTime
    * @param   {{
    *              forward: boolean;
    *              rightward: boolean;
    *              backward: boolean;
    *              leftward: boolean;
    *              jump: boolean
-   *          }}       control
-   * @param   {number} deltaTime
-   * @returns {void}
+   *          }} control
+   * @returns {[Vec3, Vec3]}
    */
-  move(control: ControlState, deltaTime: number): void {
+  move(deltaTime: number, control: ControlState): [Vec3, Vec3] {
     const force = {x: 0, y: 0, z: 0}
     const torque = {x: 0, y: 0, z: 0}
 
@@ -77,22 +59,18 @@ export class PlayerManager {
         deltaTime
     }
 
-    if (control.jump) {
-      force.y += this.#processJump() * deltaTime
-    }
-
-    this.#player.applyImpulse(vec3(force), true)
-    this.#player.applyTorqueImpulse(vec3(torque), true)
+    return [vec3(force), vec3(torque)]
   }
 
   /**
-   * Process jump
+   * Jump
    *
+   * @param   {{x: number; y: number, z: number}} origin
+   * @param   {World}                             world
    * @returns {number}
    */
-  #processJump(): number {
+  jump(origin: Vec3, world: World): number {
     const direction = {x: 0, y: -1, z: 0}
-    const origin = this.#player.translation()
 
     /**
      * @note Current player position is calculated from its center.
@@ -103,11 +81,7 @@ export class PlayerManager {
       this.#config.height * 0.5 - this.#config.control.jump.ray.displacement
 
     const ray = this.#createRay(origin, direction)
-    const hit = this.#world.castRay(
-      ray,
-      this.#config.control.jump.ray.maxToi,
-      true,
-    )
+    const hit = world.castRay(ray, this.#config.control.jump.ray.maxToi, true)
     if (hit && hit?.timeOfImpact < this.#config.control.jump.maxDistance) {
       return this.#config.control.jump.force
     }
