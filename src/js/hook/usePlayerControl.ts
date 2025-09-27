@@ -24,7 +24,7 @@ export const usePlayerControl: (
     const unsub = sub(
       (state) => state.jump,
       (isJump) => {
-        if (!isJump) {
+        if (!isJump || !playerRef?.current) {
           return
         }
         const force = playerManager.jump(
@@ -41,6 +41,10 @@ export const usePlayerControl: (
   }, [])
 
   useFrame((_, delta) => {
+    if (!playerRef?.current) {
+      return
+    }
+
     const control = get()
     const [force, torque] = playerManager.move(delta, control)
     playerRef.current.applyImpulse(force, true)
