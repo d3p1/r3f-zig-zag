@@ -5,6 +5,7 @@
 import {Canvas} from '@react-three/fiber'
 import {KeyboardControls, OrbitControls} from '@react-three/drei'
 import {Physics} from '@react-three/rapier'
+import {config} from '../etc/config.ts'
 import {Light} from './app/env/Light.tsx'
 import {Game} from './app/Game.tsx'
 import {CONTROL} from '../types'
@@ -20,7 +21,16 @@ export const App = () => {
         {name: CONTROL.JUMP, keys: ['Space']},
       ]}
     >
-      <Canvas camera={{position: [1, 1, 5]}} shadows={true}>
+      <Canvas
+        shadows={true}
+        camera={{
+          position: [
+            config.camera.position.x,
+            config.camera.position.y,
+            config.camera.position.z,
+          ],
+        }}
+      >
         <OrbitControls />
 
         <Physics debug={false}>

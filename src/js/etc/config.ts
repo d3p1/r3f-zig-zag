@@ -80,4 +80,29 @@ export const config = {
       },
     },
   },
+  camera: {
+    position: {
+      x: 0,
+      y: 50,
+      z: 100,
+      target: {
+        displacement: {
+          x: 0,
+          z: 2.5,
+          y: 1,
+          factor: 1,
+        },
+      },
+    },
+    lookAt: {
+      target: {
+        displacement: {
+          x: 0,
+          y: 0,
+          z: 1,
+          factor: 1,
+        },
+      },
+    },
+  },
 }

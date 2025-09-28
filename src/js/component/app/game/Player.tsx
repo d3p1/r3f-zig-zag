@@ -5,12 +5,14 @@
 import {type RapierRigidBody, RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import {config} from '../../../etc/config.ts'
+import {useCameraFollow} from '../../../hook/useCameraFollow.ts'
 import {usePlayerControl} from '../../../hook/usePlayerControl.ts'
 
 export const Player = () => {
   const playerRef = useRef<RapierRigidBody>(null!)
 
   usePlayerControl(playerRef)
+  useCameraFollow(playerRef)
 
   return (
     <RigidBody
