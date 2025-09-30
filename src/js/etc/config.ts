@@ -83,8 +83,8 @@ export const config = {
   camera: {
     position: {
       x: 0,
-      y: 50,
-      z: 100,
+      y: 25,
+      z: 50,
       target: {
         displacement: {
           x: 0,
