@@ -105,4 +105,19 @@ export const config = {
       },
     },
   },
+  light: {
+    position: {
+      target: {
+        displacement: {
+          get x() {
+            return config.floor.width * 3
+          },
+          get y() {
+            return config.wall.height * 2
+          },
+          z: 1,
+        },
+      },
+    },
+  },
 }
