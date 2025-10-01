@@ -18,10 +18,10 @@ export const Light = () => {
         intensity={5}
         castShadow={true}
         shadow-mapSize={[64, 64]}
-        shadow-camera-top={2}
-        shadow-camera-right={2}
-        shadow-camera-bottom={-2}
-        shadow-camera-left={-2}
+        shadow-camera-top={4}
+        shadow-camera-right={4}
+        shadow-camera-bottom={-4}
+        shadow-camera-left={-4}
         ref={lightRef}
       />
     </>

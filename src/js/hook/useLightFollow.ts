@@ -15,15 +15,21 @@ export const useLightFollow: (
       return
     }
 
-    const positionTarget = state.camera.position.clone()
-    positionTarget.x += config.light.position.target.displacement.x
-    positionTarget.y += config.light.position.target.displacement.y
-    positionTarget.z += config.light.position.target.displacement.z
+    const positionX =
+      state.camera.position.x + config.light.position.target.displacement.x
+    const positionY =
+      state.camera.position.y + config.light.position.target.displacement.y
+    const positionZ =
+      state.camera.position.z + config.light.position.target.displacement.z
+    lightRef.current.position.set(positionX, positionY, positionZ)
 
-    lightRef.current.position.set(
-      positionTarget.x,
-      positionTarget.y,
-      positionTarget.z,
-    )
+    const targetX =
+      state.camera.position.x + config.light.lookAt.target.displacement.x
+    const targetY =
+      state.camera.position.y + config.light.lookAt.target.displacement.y
+    const targetZ =
+      state.camera.position.z - config.light.lookAt.target.displacement.z
+    lightRef.current.target.position.set(targetX, targetY, targetZ)
+    lightRef.current.target.updateMatrixWorld()
   })
 }

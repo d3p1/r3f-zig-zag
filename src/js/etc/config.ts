@@ -119,5 +119,14 @@ export const config = {
         },
       },
     },
+    lookAt: {
+      target: {
+        displacement: {
+          x: 0,
+          y: 0,
+          z: 3,
+        },
+      },
+    },
   },
 }

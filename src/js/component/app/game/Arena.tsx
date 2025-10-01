@@ -55,6 +55,7 @@ export const Arena: ArenaType = ({children}) => {
             arenaMiddle,
           ]}
           scale={sideWallScale}
+          receiveShadow={true}
         />
         <mesh
           geometry={geometry}
@@ -65,6 +66,7 @@ export const Arena: ArenaType = ({children}) => {
             arenaMiddle,
           ]}
           scale={sideWallScale}
+          receiveShadow={true}
         />
         <mesh
           geometry={geometry}
@@ -75,6 +77,7 @@ export const Arena: ArenaType = ({children}) => {
             arenaEnd - config.wall.depth * 0.5,
           ]}
           scale={[config.floor.width, config.wall.height, config.wall.depth]}
+          receiveShadow={true}
         />
 
         <CuboidCollider
