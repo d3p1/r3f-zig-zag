@@ -15,9 +15,9 @@ export const Light = () => {
     <>
       <ambientLight intensity={3} />
       <directionalLight
-        intensity={5}
+        intensity={3}
         castShadow={true}
-        shadow-mapSize={[64, 64]}
+        shadow-mapSize={[128, 128]}
         shadow-camera-top={4}
         shadow-camera-right={4}
         shadow-camera-bottom={-4}
