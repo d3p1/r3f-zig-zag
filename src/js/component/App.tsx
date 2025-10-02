@@ -5,6 +5,7 @@
 import {Canvas} from '@react-three/fiber'
 import {KeyboardControls, OrbitControls} from '@react-three/drei'
 import {Physics} from '@react-three/rapier'
+import {Perf} from 'r3f-perf'
 import {config} from '../etc/config.ts'
 import {Light} from './app/env/Light.tsx'
 import {Game} from './app/Game.tsx'
@@ -31,6 +32,8 @@ export const App = () => {
           ],
         }}
       >
+        <Perf position="top-left" />
+
         <OrbitControls />
 
         <Physics debug={false}>
