@@ -7,6 +7,7 @@ import {useMemo} from 'react'
 import {useStageStore} from '../../store/stage.ts'
 import {Arena} from './game/Arena.tsx'
 import {Level} from './game/arena/Level.tsx'
+import {FinishLine} from './game/arena/level/FinishLine.tsx'
 import {Twister} from './game/arena/level/trap/Twister.tsx'
 import {Limbo} from './game/arena/level/trap/Limbo.tsx'
 import {Axe} from './game/arena/level/trap/Axe.tsx'
@@ -40,7 +41,9 @@ export const Game: GameType = ({traps = [Twister, Limbo, Axe]}) => {
           })
         })}
 
-        <Level position={[0, 0, -((trapCount + 1) * config.floor.height)]} />
+        <FinishLine
+          position={[0, 0, -((trapCount + 1) * config.floor.height)]}
+        />
       </Arena>
 
       <Player />
