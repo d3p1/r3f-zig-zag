@@ -3,6 +3,10 @@
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
 export const config = {
+  world: {
+    friction: 0,
+    restitution: 0.2,
+  },
   floor: {
     position: {
       y: 0,
@@ -10,6 +14,7 @@ export const config = {
     width: 4,
     height: 4,
     depth: 0.25,
+    friction: 1,
   },
   wall: {
     get height() {
@@ -56,6 +61,7 @@ export const config = {
   },
   player: {
     height: 1,
+    friction: 1,
     details: 1,
     movement: {
       force: 3,

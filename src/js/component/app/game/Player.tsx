@@ -17,8 +17,8 @@ export const Player = () => {
   return (
     <RigidBody
       type="dynamic"
-      restitution={0.2}
-      friction={1}
+      restitution={config.world.restitution}
+      friction={config.player.friction}
       position={[0, config.player.height * 0.5, 0]}
       colliders="ball"
       linearDamping={config.player.movement.damping.linear}

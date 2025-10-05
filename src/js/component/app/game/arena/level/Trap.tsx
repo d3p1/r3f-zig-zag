@@ -57,8 +57,8 @@ export const Trap: TrapType = ({
       <RigidBody
         type="kinematicPosition"
         position={[0, scale[1] * 0.5, 0]}
-        restitution={0.2}
-        friction={0}
+        restitution={config.world.restitution}
+        friction={config.world.friction}
         ref={bodyRef}
       >
         <mesh

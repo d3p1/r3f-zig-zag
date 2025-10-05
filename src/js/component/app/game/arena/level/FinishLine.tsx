@@ -6,6 +6,7 @@ import {RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import {type Level as LevelType} from '../../../../../types/index.ts'
 import {Level} from '../Level.tsx'
+import {config} from '../../../../../etc/config.ts'
 
 export const FinishLine: LevelType = ({position}) => {
   const hasCollideRef = useRef(false)
@@ -22,8 +23,8 @@ export const FinishLine: LevelType = ({position}) => {
     <RigidBody
       type="fixed"
       position={position}
-      restitution={0.2}
-      friction={1}
+      restitution={config.world.restitution}
+      friction={config.floor.friction}
       onCollisionEnter={handleCollisionEnter}
     >
       <Level position={[0, 0, 0]} />

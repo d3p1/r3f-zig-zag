@@ -42,8 +42,8 @@ export const Arena: ArenaType = ({children}) => {
     <>
       <RigidBody
         type="fixed"
-        restitution={0.2}
-        friction={0}
+        restitution={config.world.restitution}
+        friction={config.world.friction}
         position={[0, 0, 0]}
       >
         <mesh
@@ -87,8 +87,8 @@ export const Arena: ArenaType = ({children}) => {
             totalDistance * 0.5,
           ]}
           position={[0, -config.floor.depth * 0.5, arenaMiddle]}
-          restitution={0.2}
-          friction={1}
+          restitution={config.world.restitution}
+          friction={config.floor.friction}
         />
       </RigidBody>
 
