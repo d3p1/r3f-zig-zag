@@ -4,19 +4,22 @@
  */
 import {RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
+import {useStageStore} from '../../../../../store/stage.ts'
 import {type Level as LevelType} from '../../../../../types/index.ts'
 import {Level} from '../Level.tsx'
 import {config} from '../../../../../etc/config.ts'
 
 export const FinishLine: LevelType = ({position}) => {
   const hasCollideRef = useRef(false)
+  const finish = useStageStore((state) => state.finish)
 
   const handleCollisionEnter = () => {
     if (hasCollideRef.current) {
       return
     }
-
     hasCollideRef.current = true
+
+    finish()
   }
 
   return (

@@ -9,6 +9,7 @@ import {type RapierRigidBody, useRapier, vec3} from '@react-three/rapier'
 import {useEffect} from 'react'
 import * as React from 'react'
 import {PlayerManager} from '../service/player-manager.ts'
+import {useStageStore} from '../store/stage.ts'
 import {CONTROL} from '../types'
 import {config} from '../etc/config.ts'
 
@@ -16,11 +17,16 @@ const playerManager = new PlayerManager(config.player)
 export const usePlayerControl: (
   playerRef: React.RefObject<RapierRigidBody>,
 ) => void = (playerRef) => {
+  const isFinished = useStageStore((state) => state.isFinished)
   const [sub, get] =
     useKeyboardControls<(typeof CONTROL)[keyof typeof CONTROL]>()
   const {world} = useRapier()
 
   useEffect(() => {
+    if (isFinished) {
+      return
+    }
+
     const unsub = sub(
       (state) => state.jump,
       (isJump) => {
@@ -38,10 +44,10 @@ export const usePlayerControl: (
     return () => {
       unsub()
     }
-  }, [])
+  }, [isFinished])
 
   useFrame((_, delta) => {
-    if (!playerRef?.current) {
+    if (!playerRef?.current || isFinished) {
       return
     }
 
