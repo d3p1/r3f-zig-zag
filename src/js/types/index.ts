@@ -31,7 +31,11 @@ export type StageState = {
   trapMaterial: THREE.MeshStandardMaterial
   wallMaterial: THREE.MeshStandardMaterial
   trapCount: number
+  isStarted: boolean
   isFinished: boolean
+  timeStart: number | null
+  timeFinish: number | null
+  start: () => void
   finish: () => void
 }
 export type LevelProps = {

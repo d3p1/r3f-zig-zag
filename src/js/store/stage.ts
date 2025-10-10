@@ -13,11 +13,22 @@ export const useStageStore = create<StageState>((set) => ({
   trapMaterial: new THREE.MeshStandardMaterial({color: 'red'}),
   wallMaterial: new THREE.MeshStandardMaterial({color: 'slategray'}),
   trapCount: 3,
+  isStarted: false,
   isFinished: false,
+  timeStart: null,
+  timeFinish: null,
+
+  start: () => {
+    set({
+      isStarted: true,
+      timeStart: Date.now(),
+    })
+  },
 
   finish: () => {
     set({
       isFinished: true,
+      timeFinish: Date.now(),
     })
   },
 }))
