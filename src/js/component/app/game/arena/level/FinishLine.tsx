@@ -2,6 +2,7 @@
  * @description Finish line
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
+import {Float, Text} from '@react-three/drei'
 import {RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import {useStageStore} from '../../../../../store/stage.ts'
@@ -30,6 +31,11 @@ export const FinishLine: LevelType = ({position}) => {
       friction={config.floor.friction}
       onCollisionEnter={handleCollisionEnter}
     >
+      <Float>
+        <Text fontSize={1} position={[0, 1, 0]}>
+          Finish
+        </Text>
+      </Float>
       <Level position={[0, 0, 0]} />
     </RigidBody>
   )
