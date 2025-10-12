@@ -1,3 +1,28 @@
+# [1.2.0](https://github.com/d3p1/r3f-zig-zag/compare/v1.1.0...v1.2.0) (2025-10-12)
+
+
+### Bug Fixes
+
+* adjust light target position [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([2d0bec2](https://github.com/d3p1/r3f-zig-zag/commit/2d0bec207cbd452c6315ab8037c0e3d53bf98d66))
+* adjust player movement validations [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([c7efec1](https://github.com/d3p1/r3f-zig-zag/commit/c7efec16b7446ad61bb9173cedd9af34fb12ead0))
+* disable physics debug feature [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([4e16662](https://github.com/d3p1/r3f-zig-zag/commit/4e166626fe81014e6ec040961d2eeed34107b8b4))
+
+
+### Features
+
+* add easing to camera look at target effect [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([6d2e5be](https://github.com/d3p1/r3f-zig-zag/commit/6d2e5be753e7a6c95a769c30795942a5aba234f0))
+* add finish menu [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([22e8bce](https://github.com/d3p1/r3f-zig-zag/commit/22e8bcee4fdf786a31d3ec164b541e98b447a5e4))
+* add finish text to finish line [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([c599e3d](https://github.com/d3p1/r3f-zig-zag/commit/c599e3df3af2fc7cfc63205e211bc6199107e6ce))
+* add has collide flag for finish line component [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([6c1b64c](https://github.com/d3p1/r3f-zig-zag/commit/6c1b64c1d69efe9187e50cbee87e54ba755a5ebe))
+* add timer [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([4e4519a](https://github.com/d3p1/r3f-zig-zag/commit/4e4519a643d758962290956e69701ef955461071))
+* add use camera follow hook [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([f9310d5](https://github.com/d3p1/r3f-zig-zag/commit/f9310d5f509fb9f5ccfd439467bf94af98d85703))
+* disable player controls when stage finished [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([6f975ca](https://github.com/d3p1/r3f-zig-zag/commit/6f975cad103cfe416ab24c353d94f4dd58ca4a1f))
+* improve light and shadow effects [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([b3ce1b0](https://github.com/d3p1/r3f-zig-zag/commit/b3ce1b0749124adfdd131166d0292dc78a8f4688))
+* init finish line component [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([81ffe6e](https://github.com/d3p1/r3f-zig-zag/commit/81ffe6e1c5dbf366575257f9e682c6d50d0e5a8b))
+* init use light follow hook [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([b1b052f](https://github.com/d3p1/r3f-zig-zag/commit/b1b052fb97c6cb0e2c5d4962a439fabd72b0b8e2))
+* install performance monitoring tool [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([e6b8e0c](https://github.com/d3p1/r3f-zig-zag/commit/e6b8e0cf3ab54ee22fb8f89dd00dd45c857016da))
+* remove unneeded orbit controls [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([8db1649](https://github.com/d3p1/r3f-zig-zag/commit/8db164996ba24acf8f522dd1ba11e015f76ca431))
+
 # [1.1.0](https://github.com/d3p1/r3f-zig-zag/compare/v1.0.0...v1.1.0) (2025-09-25)
 
 
