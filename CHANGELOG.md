@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/d3p1/r3f-zig-zag/compare/v1.2.0...v1.3.0) (2025-10-12)
+
+
+### Features
+
+* add hamburguer prize to finish line [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([bd5a2e4](https://github.com/d3p1/r3f-zig-zag/commit/bd5a2e41326295ce1e77edd35571761b7431ea54))
+
 # [1.2.0](https://github.com/d3p1/r3f-zig-zag/compare/v1.1.0...v1.2.0) (2025-10-12)
 
 
