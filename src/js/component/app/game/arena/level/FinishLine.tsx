@@ -2,7 +2,7 @@
  * @description Finish line
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  */
-import {Float, Text} from '@react-three/drei'
+import {Float, Text, useGLTF} from '@react-three/drei'
 import {RigidBody} from '@react-three/rapier'
 import {useRef} from 'react'
 import {useStageStore} from '../../../../../store/stage.ts'
@@ -11,6 +11,9 @@ import {Level} from '../Level.tsx'
 import {config} from '../../../../../etc/config.ts'
 
 export const FinishLine: LevelType = ({position}) => {
+  const hamburger = useGLTF(
+    'https://d3p1.github.io/three.js-journey/media/models/Hamburger/hamburger-draco.glb',
+  )
   const hasCollideRef = useRef(false)
   const finish = useStageStore((state) => state.finish)
 
@@ -32,10 +35,17 @@ export const FinishLine: LevelType = ({position}) => {
       onCollisionEnter={handleCollisionEnter}
     >
       <Float>
-        <Text fontSize={1} position={[0, 1, 0]}>
+        <Text fontSize={1} position={[0, 1, 1]}>
           Finish
         </Text>
+
+        <primitive
+          object={hamburger.scene}
+          position={[0, 0, -1]}
+          scale={[0.25, 0.25, 0.25]}
+        />
       </Float>
+
       <Level position={[0, 0, 0]} />
     </RigidBody>
   )
