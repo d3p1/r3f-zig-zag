@@ -35,14 +35,18 @@ export const FinishLine: LevelType = ({position}) => {
       onCollisionEnter={handleCollisionEnter}
     >
       <Float>
-        <Text fontSize={1} position={[0, 1, 1]}>
+        <Text fontSize={1} position={[0, config.wall.height, 0]}>
           Finish
         </Text>
 
         <primitive
           object={hamburger.scene}
-          position={[0, 0, -1]}
-          scale={[0.25, 0.25, 0.25]}
+          position={[0, 0, 0]}
+          scale={[
+            config.wall.height * 0.1,
+            config.wall.height * 0.1,
+            config.wall.height * 0.1,
+          ]}
         />
       </Float>
 
