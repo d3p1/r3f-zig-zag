@@ -34,7 +34,7 @@ export const FinishLine: LevelType = ({position}) => {
       friction={config.floor.friction}
       onCollisionEnter={handleCollisionEnter}
     >
-      <Float>
+      <Float floatIntensity={2} rotationIntensity={2}>
         <Text fontSize={1} position={[0, config.wall.height, 0]}>
           Finish
         </Text>
