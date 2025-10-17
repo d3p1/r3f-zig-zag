@@ -4,6 +4,7 @@
  */
 import {useKeyboardControls} from '@react-three/drei'
 import {useEffect, useState} from 'react'
+import {addEffect} from '@react-three/fiber'
 import {TimerManager} from '../../../service/timer-manager.ts'
 import {useStageStore} from '../../../store/stage.ts'
 
@@ -36,8 +37,7 @@ export const Timer = () => {
       return
     }
 
-    let animationId: number | null = null
-    const animate = () => {
+    const removeEffect = addEffect(() => {
       const t = TimerManager.processGameElapsedTime(
         startTime as number,
         finishTime as number,
@@ -45,16 +45,10 @@ export const Timer = () => {
         isFinished,
       )
       setTime(t)
-      animationId = requestAnimationFrame(animate)
-    }
-    animate()
+    })
 
     return () => {
-      if (!animationId) {
-        return
-      }
-
-      cancelAnimationFrame(animationId)
+      removeEffect()
     }
   }, [isStarted])
 
