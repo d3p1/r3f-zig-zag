@@ -33,8 +33,8 @@ export type StageState = {
   trapCount: number
   isStarted: boolean
   isFinished: boolean
-  timeStart: number | null
-  timeFinish: number | null
+  startTime: number | null
+  finishTime: number | null
   start: () => void
   finish: () => void
 }

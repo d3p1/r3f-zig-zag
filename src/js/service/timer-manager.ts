@@ -6,23 +6,23 @@ export class TimerManager {
   /**
    * Process game elapsed time
    *
-   * @param   {number}  timeStart
-   * @param   {number}  timeFinish
+   * @param   {number}  startTime
+   * @param   {number}  finishTime
    * @param   {number}  currentTime
    * @param   {boolean} isFinishedGame
    * @returns {number}
    */
   static processGameElapsedTime(
-    timeStart: number,
-    timeFinish: number,
+    startTime: number,
+    finishTime: number,
     currentTime: number,
     isFinishedGame: boolean,
   ): number {
     let time
     if (isFinishedGame) {
-      time = timeFinish - timeStart
+      time = finishTime - startTime
     } else {
-      time = currentTime - timeStart
+      time = currentTime - startTime
     }
     return time * 0.001
   }

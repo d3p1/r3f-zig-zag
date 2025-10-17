@@ -15,20 +15,20 @@ export const useStageStore = create<StageState>((set) => ({
   trapCount: 3,
   isStarted: false,
   isFinished: false,
-  timeStart: null,
-  timeFinish: null,
+  startTime: null,
+  finishTime: null,
 
   start: () => {
     set({
       isStarted: true,
-      timeStart: Date.now(),
+      startTime: Date.now(),
     })
   },
 
   finish: () => {
     set({
       isFinished: true,
-      timeFinish: Date.now(),
+      finishTime: Date.now(),
     })
   },
 }))

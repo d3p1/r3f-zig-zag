@@ -11,8 +11,8 @@ export const Timer = () => {
   const isStarted = useStageStore((state) => state.isStarted)
   const isFinished = useStageStore((state) => state.isFinished)
   const start = useStageStore((state) => state.start)
-  const timeStart = useStageStore((state) => state.timeStart)
-  const timeFinish = useStageStore((state) => state.timeFinish)
+  const startTime = useStageStore((state) => state.startTime)
+  const finishTime = useStageStore((state) => state.finishTime)
   const [sub] = useKeyboardControls()
 
   const [time, setTime] = useState(0)
@@ -39,8 +39,8 @@ export const Timer = () => {
     let animationId: number | null = null
     const animate = () => {
       const t = TimerManager.processGameElapsedTime(
-        timeStart as number,
-        timeFinish as number,
+        startTime as number,
+        finishTime as number,
         Date.now(),
         isFinished,
       )
