@@ -5,12 +5,12 @@
 import {Canvas} from '@react-three/fiber'
 import {KeyboardControls} from '@react-three/drei'
 import {Physics} from '@react-three/rapier'
-import {Perf} from 'r3f-perf'
 import {config} from '../etc/config.ts'
 import {useStageStore} from '../store/stage.ts'
 import {Light} from './app/env/Light.tsx'
 import {Game} from './app/Game.tsx'
 import {CONTROL} from '../types'
+import {Debugger} from './app/game/Debugger.tsx'
 import {Timer} from './app/game/Timer.tsx'
 
 export const App = () => {
@@ -36,7 +36,7 @@ export const App = () => {
           ],
         }}
       >
-        <Perf position="top-left" />
+        <Debugger />
 
         <Physics debug={false}>
           <Light />
