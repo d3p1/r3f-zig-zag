@@ -7,6 +7,7 @@ import {useEffect, useState} from 'react'
 import {addEffect} from '@react-three/fiber'
 import {TimerManager} from '../../../service/timer-manager.ts'
 import {useStageStore} from '../../../store/stage.ts'
+import type {ActiveControl} from '../../../types'
 
 export const Timer = () => {
   const isStarted = useStageStore((state) => state.isStarted)
@@ -14,7 +15,7 @@ export const Timer = () => {
   const start = useStageStore((state) => state.start)
   const startTime = useStageStore((state) => state.startTime)
   const finishTime = useStageStore((state) => state.finishTime)
-  const [sub] = useKeyboardControls()
+  const [sub] = useKeyboardControls<ActiveControl>()
 
   const [time, setTime] = useState(0)
 
@@ -23,9 +24,17 @@ export const Timer = () => {
       return
     }
 
-    const unsub = sub(() => {
-      start()
-    })
+    const unsub = sub(
+      (state) =>
+        state.forward ||
+        state.rightward ||
+        state.backward ||
+        state.leftward ||
+        state.jump,
+      () => {
+        start()
+      },
+    )
 
     return () => {
       unsub()
