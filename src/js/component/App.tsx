@@ -6,7 +6,6 @@ import {Canvas} from '@react-three/fiber'
 import {KeyboardControls} from '@react-three/drei'
 import {Physics} from '@react-three/rapier'
 import {config} from '../etc/config.ts'
-import {useStageStore} from '../store/stage.ts'
 import {Light} from './app/env/Light.tsx'
 import {Game} from './app/Game.tsx'
 import {CONTROL} from '../types'
@@ -14,8 +13,6 @@ import {Debugger} from './app/game/Debugger.tsx'
 import {Timer} from './app/game/Timer.tsx'
 
 export const App = () => {
-  const isFinished = useStageStore((state) => state.isFinished)
-
   return (
     <KeyboardControls
       map={[
@@ -46,10 +43,6 @@ export const App = () => {
       </Canvas>
 
       <Timer />
-
-      {isFinished && (
-        <div className="fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.6)] text-primary backdrop-blur-md"></div>
-      )}
     </KeyboardControls>
   )
 }
