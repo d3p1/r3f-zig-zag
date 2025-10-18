@@ -1,3 +1,22 @@
+# [1.4.0](https://github.com/d3p1/r3f-zig-zag/compare/v1.3.0...v1.4.0) (2025-10-18)
+
+
+### Bug Fixes
+
+* adjust time calculation when game finishes [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([04ac818](https://github.com/d3p1/r3f-zig-zag/commit/04ac81850bd34575645f94dc06d017562fef6545))
+* avoid running timer when debug key is pressed [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([620f88f](https://github.com/d3p1/r3f-zig-zag/commit/620f88feb24b86947196d462fab041793c289a93))
+
+
+### Features
+
+* add debugger component [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([98f0a9e](https://github.com/d3p1/r3f-zig-zag/commit/98f0a9e35d599d74efc3e844c396d8d2be9d730b))
+* improve debugger component [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([0f77412](https://github.com/d3p1/r3f-zig-zag/commit/0f77412285259cf8702d303776bf9cd066cb3427))
+* improve finish text and prize position [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([d2680e0](https://github.com/d3p1/r3f-zig-zag/commit/d2680e0a152ef243e05ade56816b910aead7e1f4))
+* improve float and rotation intensity for finish line prize and text [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([c8fd3ce](https://github.com/d3p1/r3f-zig-zag/commit/c8fd3ceb5cf9f4ef837597d28941a21c1920aab2))
+* improve timer styles [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([032eaf8](https://github.com/d3p1/r3f-zig-zag/commit/032eaf802be15006e312745dd0ba0dc59a3de32b))
+* remove finish page [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([407a3ff](https://github.com/d3p1/r3f-zig-zag/commit/407a3ff9cfa155c24cea292671f00536aab95a86))
+* remove hamburguer prize [[#1](https://github.com/d3p1/r3f-zig-zag/issues/1)] ([5145172](https://github.com/d3p1/r3f-zig-zag/commit/5145172d8ec09ac89c986dbfd1b2c18f0a2a31d1))
+
 # [1.3.0](https://github.com/d3p1/r3f-zig-zag/compare/v1.2.0...v1.3.0) (2025-10-12)
 
 
