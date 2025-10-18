@@ -10,7 +10,7 @@ import {useEffect} from 'react'
 import * as React from 'react'
 import {PlayerManager} from '../service/player-manager.ts'
 import {useStageStore} from '../store/stage.ts'
-import {CONTROL} from '../types'
+import {type ActiveControl} from '../types'
 import {config} from '../etc/config.ts'
 
 const playerManager = new PlayerManager(config.player)
@@ -18,8 +18,7 @@ export const usePlayerControl: (
   playerRef: React.RefObject<RapierRigidBody>,
 ) => void = (playerRef) => {
   const isFinished = useStageStore((state) => state.isFinished)
-  const [sub, get] =
-    useKeyboardControls<(typeof CONTROL)[keyof typeof CONTROL]>()
+  const [sub, get] = useKeyboardControls<ActiveControl>()
   const {world} = useRapier()
 
   useEffect(() => {

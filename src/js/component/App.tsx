@@ -24,6 +24,7 @@ export const App = () => {
         {name: CONTROL.BACKWARD, keys: ['ArrowDown', 'KeyS']},
         {name: CONTROL.LEFTWARD, keys: ['ArrowLeft', 'KeyA']},
         {name: CONTROL.JUMP, keys: ['Space']},
+        {name: CONTROL.DEBUG, keys: ['KeyH']},
       ]}
     >
       <Canvas
