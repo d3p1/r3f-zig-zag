@@ -62,6 +62,8 @@ export const Timer = () => {
   }, [isStarted])
 
   return (
-    <div className="fixed top-2 right-2 text-primary">{time.toFixed(2)}</div>
+    <div className="fixed top-4 text-primary text-xl p-4 w-full flex justify-center items-center font-black bg-[rgba(0,0,0,0.2)] backdrop-blur-xs">
+      {time.toFixed(2)}
+    </div>
   )
 }
